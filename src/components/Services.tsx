@@ -28,12 +28,12 @@ const services = [
     },
     {
         icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-settings-icon lucide-settings"><path d="M9.671 4.136a2.34 2.34 0 0 1 4.659 0 2.34 2.34 0 0 0 3.319 1.915 2.34 2.34 0 0 1 2.33 4.033 2.34 2.34 0 0 0 0 3.831 2.34 2.34 0 0 1-2.33 4.033 2.34 2.34 0 0 0-3.319 1.915 2.34 2.34 0 0 1-4.659 0 2.34 2.34 0 0 0-3.32-1.915 2.34 2.34 0 0 1-2.33-4.033 2.34 2.34 0 0 0 0-3.831A2.34 2.34 0 0 1 6.35 6.051a2.34 2.34 0 0 0 3.319-1.915" /><circle cx="12" cy="12" r="3" /></svg>,
-        title: "Management Systems Services",
+        title: "Management Systems",
         description: "Development, implementation, training, and certification for ISO standards (45001, 14001, 9001, 41001) in health, safety, environment, and quality."
     },
     {
         icon: <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-building-icon lucide-building"><path d="M12 10h.01" /><path d="M12 14h.01" /><path d="M12 6h.01" /><path d="M16 10h.01" /><path d="M16 14h.01" /><path d="M16 6h.01" /><path d="M8 10h.01" /><path d="M8 14h.01" /><path d="M8 6h.01" /><path d="M9 22v-3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v3" /><rect x="4" y="2" width="16" height="20" rx="2" /></svg>,
-        title: "Facilities Management Services",
+        title: "Facilities Management",
         description: "Cleaning, safety inspections, maintenance procurement, energy audits with IoT integration, and overall facility safety management."
     }
 ];
@@ -50,7 +50,7 @@ const Services = () => {
                         <h2 className=" text-3xl font-bold  text-gray-900 sm:text-4xl md:text-5xl">Comprehensive  <span className="text-(--my-green)">HSE Solutions</span></h2>
                     </div>
 
-                    <Link to={"/"}> <span className="text-(--my-purple) font-semibold text-sm">View Services &rarr;</span></Link>
+                    <Link to={"/services"}> <span className="text-(--my-purple) font-semibold text-sm">View Services &darr;</span></Link>
 
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mt-12">

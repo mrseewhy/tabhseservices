@@ -18,7 +18,7 @@ const Footer = () => {
                         <p className="text-sm text-gray-400 mb-4">Premier HSE consultancy helping organisations maintain compliance, protect people, and embed sustainable environmental responsibility across Nigeria.</p>
                         <LinkButton
                             color="bg-(--my-green) text-white hover:bg-green-700"
-                            to="/"
+                            to="/contact-us"
                             children="Schedule Consultation →"
                         />
                     </div>
@@ -45,11 +45,11 @@ const Footer = () => {
                             Company
                         </h5>
                         <ul className="text-sm text-gray-400 flex flex-col gap-2 list-disc pl-4 marker:text-(--my-purple)">
-                            <li>Home</li>
-                            <li>About us</li>
-                            <li>Our services</li>
-                            <li>Why TAB HSE</li>
-                            <li>Contact Us</li>
+                            <li><Link to={"/"}>Home</Link></li>
+                            <li><Link to={"/about-us"}>About Us</Link></li>
+                            <li><Link to={"/services"}>Our Services</Link></li>
+                            <li><Link to={"/why-us"}>Why TAB HSE</Link></li>
+                            <li><Link to={"/contact-us"}>Contact Us</Link></li>
                         </ul>
                     </div>
 

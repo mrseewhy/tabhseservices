@@ -8,10 +8,10 @@ interface NavItem {
 
 const navItems: NavItem[] = [
     { url: "/", name: "Home" },
-    { url: "/about", name: "About Us" },
+    { url: "/about-us", name: "About Us" },
     { url: "/services", name: "Services" },
     { url: "/why-us", name: "Why Us" },
-    { url: "/contact", name: "Contact Us" },
+    { url: "/contact-us", name: "Contact Us" },
 ]
 
 const Navbar = () => {
@@ -60,7 +60,7 @@ const Navbar = () => {
                     {/* Right side: CTA + Hamburger */}
                     <div className="flex items-center gap-3">
                         <NavLink
-                            to="/contact"
+                            to="/contact-us"
                             className="hidden md:inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#00A651] text-white text-sm font-semibold hover:bg-[#008a44] transition-colors duration-200 shadow-sm"
                         >
                             Schedule Consultation
@@ -102,7 +102,7 @@ const Navbar = () => {
                     ))}
                     <li className="pt-3">
                         <NavLink
-                            to="/contact"
+                            to="/contact-us"
                             onClick={() => setIsOpen(false)}
                             className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg bg-[#00A651] text-white text-sm font-semibold hover:bg-[#008a44] transition-colors duration-200"
                         >

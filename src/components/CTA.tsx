@@ -61,12 +61,12 @@ const CTA = () => {
                         <div className="mt-8 flex flex-wrap gap-4">
                             <LinkButton
                                 color="bg-(--my-green) text-white hover:bg-green-700"
-                                to="/"
+                                to="/contact-us"
                                 children="Schedule Consultation →"
                             />
                             <LinkButton
                                 color="bg-gray-900 text-white hover:bg-gray-700"
-                                to="/"
+                                to="/services"
                                 children="Explore Services"
                             />
                         </div>

@@ -154,7 +154,7 @@ const Contact = () => {
                             <div className="mt-5">
                                 <LinkButton
                                     color="bg-(--my-green) text-white hover:bg-green-700"
-                                    to="/"
+                                    to="/contact-us"
                                     children="Send us a message"
                                 />
                             </div>

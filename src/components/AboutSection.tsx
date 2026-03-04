@@ -45,7 +45,7 @@ const AboutSection = () => {
                         <div className="mt-8">
                             <LinkButton
                                 color="bg-(--my-green) text-white hover:bg-green-700"
-                                to="/"
+                                to="/about-us"
                                 children="Discover More"
                             />
                         </div>
