@@ -85,7 +85,6 @@ const stats = [
     { value: "7", label: "Service Areas", accent: "green" },
 ];
 
-const clients = ["Greenpeg", "C Power Solutions", "Spazio Ideale", "FilmoRE"];
 
 const WhyTAB = () => {
     return (
