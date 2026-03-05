@@ -29,7 +29,7 @@ const Clients = () => {
     ];
 
     return (
-        <section className="py-4 md:py-10 bg-white">
+        <section className="py-4 md:py-10 ">
             <div className="container mx-auto">
                 {/* Heading stays centered inside container */}
                 {/* <h2 className="text-center text-xl md:text-2xl font-semibold text-gray-800 mb-8">

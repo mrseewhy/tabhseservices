@@ -1,3 +1,4 @@
+import Clients from "../components/Clients";
 import LinkButton from "../components/LinkButton";
 
 const reasons = [
@@ -242,7 +243,8 @@ const WhyTAB = () => {
                         </h2>
                         <div className="mt-3 mx-auto h-1 w-16 rounded-full bg-(--my-purple)" />
                     </div>
-                    <div className="flex flex-wrap items-center justify-center gap-4">
+                    <Clients />
+                    {/* <div className="flex flex-wrap items-center justify-center gap-4">
                         {clients.map((c) => (
                             <div
                                 key={c}
@@ -251,7 +253,7 @@ const WhyTAB = () => {
                                 {c}
                             </div>
                         ))}
-                    </div>
+                    </div> */}
                 </div>
             </section>
 
@@ -259,14 +261,14 @@ const WhyTAB = () => {
             <section className="relative py-16 md:py-24 overflow-hidden">
 
                 {/* Dot grid */}
-                <div
+                {/* <div
                     className="absolute inset-0 pointer-events-none"
                     style={{
                         backgroundImage: "radial-gradient(circle, #7B2D8B 1px, transparent 1px)",
                         backgroundSize: "28px 28px",
                         opacity: 0.06,
                     }}
-                />
+                /> */}
 
                 <div className="relative container">
                     <div className="max-w-2xl mx-auto text-center">
@@ -282,7 +284,7 @@ const WhyTAB = () => {
                             Let's walk alongside your organisation on the journey to excellence
                             in health, safety, environment, and sustainability.
                         </p>
-                        <div className="mt-8 flex flex-wrap gap-4 justify-center">
+                        <div className="mt-8 flex flex-wrap gap-12 justify-center">
                             <LinkButton
                                 color="bg-(--my-green) text-white hover:bg-green-700"
                                 to="/contact-us"

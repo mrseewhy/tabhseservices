@@ -58,7 +58,7 @@ const CTA = () => {
                         <p className='mt-5 text-gray-600 text-sm sm:text-base'>
                             Strengthen compliance, protect your workforce, and build systems that drive measurable safety performance across your organisation.
                         </p>
-                        <div className="mt-8 flex flex-wrap gap-4">
+                        <div className="mt-8 flex flex-wrap gap-12">
                             <LinkButton
                                 color="bg-(--my-green) text-white hover:bg-green-700"
                                 to="/contact-us"

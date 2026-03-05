@@ -515,7 +515,7 @@ const ServicesPage = () => {
                             Our team will walk you through the right services for your organisation's
                             needs. Schedule a free consultation and let's find the best path forward together.
                         </p>
-                        <div className="mt-8 flex flex-wrap gap-4 justify-center">
+                        <div className="mt-8 flex flex-wrap gap-12 justify-center">
                             <LinkButton
                                 color="bg-(--my-green) text-white hover:bg-green-700"
                                 to="/contact-us"
