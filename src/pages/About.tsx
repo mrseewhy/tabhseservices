@@ -1,7 +1,14 @@
+import AboutSectionForPage from "../components/AboutSectionForPage"
+import CoreValues from "../components/CoreValues"
+import WhatGuidesUs from "../components/WhatGuidesUs"
 
 const About = () => {
     return (
-        <div>About</div>
+        <div className="bg-white">
+            <AboutSectionForPage />
+            <WhatGuidesUs />
+            <CoreValues />
+        </div>
     )
 }
 
