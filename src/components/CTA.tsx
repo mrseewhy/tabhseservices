@@ -51,9 +51,9 @@ const CTA = () => {
                             Partner With Confidence
                         </h5>
                         <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
-                            Ready to Elevate Your{" "}
+                            We Don't Just Work For You
                             <br className="hidden sm:block" />
-                            <span className="text-(--my-green)">Safety Standards</span>?
+                            <span className="text-(--my-green)">We Work With You</span>
                         </h2>
                         <p className='mt-5 text-gray-600 text-sm sm:text-base'>
                             Strengthen compliance, protect your workforce, and build systems that drive measurable safety performance across your organisation.
