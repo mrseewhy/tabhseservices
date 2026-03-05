@@ -368,8 +368,8 @@ const services = [
         title: "Technical Services",
         description: "End-to-end procurement, installation, and integration of fire, security, and emergency systems.",
         items: [
-            "Procurement and Installation of Fire Systems: Smoke detectors, Fire Alarms, Fire Pumps and Hydrant systems, FM200, Portable and Automatic Extinguishers",
-            "Procurement and Installation of Security Systems, Sensors, Doors, IOT Integration",
+            "Procurement and Installation of Fire Systems: Smoke detectors, Fire Alarms, Fire Pumps and Hydrant systems, FM200, Portable and Automatic Extinguishers e.t.c.",
+            "Procurement and Installation of Security Systems, Sensors, Doors, IOT Integration e.t.c.",
             "Emergency Evacuation and Response Plan Technical Services",
         ],
     },

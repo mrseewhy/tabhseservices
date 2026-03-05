@@ -102,7 +102,7 @@ const Hero = () => {
                         safety culture, environmental sustainability, and compliance excellence —
                         from policy to practice.
                     </p>
-                    <div className="mt-8 flex flex-wrap gap-4">
+                    <div className="mt-8 flex flex-wrap gap-12">
                         <LinkButton
                             color="bg-(--my-green) text-white hover:bg-green-700"
                             to="/about-us"
