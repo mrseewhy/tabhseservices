@@ -94,7 +94,7 @@ const Hero = () => {
                     </h1>
                     <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold uppercase mb-4 font-head">
                         Building Safer,{" "}
-                        <span className="text-(--my-green)">Healthier</span>{" "}
+                        <span className="text-(--my-green) block ">Healthier</span>{" "}
                         Industries<span className="text-(--my-purple)">.</span>
                     </h2>
                     <p className="text-gray-200 max-w-lg leading-relaxed font-body">

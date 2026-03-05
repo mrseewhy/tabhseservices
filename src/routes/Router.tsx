@@ -1,20 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
-import { lazy } from "react";
+import MainLayout from "../layouts/MainLayout";
+import PagesLayout from "../layouts/PagesLayout";
+import About from "../pages/About";
+import Home from "../pages/Home";
+import Services from "../pages/Services";
+import WhyTAB from "../pages/WhyTAB";
+import ContactPage from "../pages/ContactPage";
 
 
 
-//Layouts
-const MainLayout = lazy(() => import("../layouts/MainLayout"))
-const PagesLayout = lazy(() => import("../layouts/PagesLayout"))
 
 
 
-//Pages
-const Home = lazy(() => import("../pages/Home"))
-const About = lazy(() => import("../pages/About"))
-const ContactPage = lazy(() => import("../pages/ContactPage"))
-const WhyTAB = lazy(() => import("../pages/WhyTAB"))
-const Services = lazy(() => import("../pages/Services"))
+
+
 
 
 
