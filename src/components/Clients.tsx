@@ -67,9 +67,7 @@ const Clients = () => {
     return (
         <section className="py-10 bg-white px-8">
             <div className="container overflow-hidden">
-                <h2 className="text-center text-xl md:text-2xl font-semibold text-gray-800 mb-8">
-                    Trusted By
-                </h2>
+
 
                 <div
                     className="relative"
