@@ -219,7 +219,7 @@ const Footer = () => {
                                 </div>
                                 <div className="flex flex-col min-w-0">
                                     <h4 className="text-sm font-bold">Email</h4>
-                                    <p className="text-xs truncate"><a href="mailto:tabhseservices@gmail.com" target="_blank">tabhseservices@gmail.com</a></p>
+                                    <p className="text-xs truncate"><a href="mailto:info@tabhseservices.com" target="_blank">info@tabhseservices.com</a></p>
                                 </div>
                             </div>
 

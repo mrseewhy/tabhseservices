@@ -33,8 +33,8 @@ const contactDetails = [
             </svg>
         ),
         label: "Email",
-        value: "tabhseservices@gmail.com",
-        href: "mailto:tabhseservices@gmail.com",
+        value: "info@tabhseservices.com",
+        href: "mailto:info@tabhseservices.com",
     },
     {
         accent: "purple",

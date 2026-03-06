@@ -1,24 +1,6 @@
 
-
-//     return (
-//         <div className="py-10 bg-white">
-//             <div className="px-10 max-w-[1280px] mx-auto">
-//                 <div className="grid grid-cols-2 md:grid-cols-4 gap-12 items-center justify-center">
-//                     <div className=" p-6">
-//                         <img src="/img/tab-1.png" alt="logo-1" />
-//                     </div>
-//                     <div className=" p-4"> <img src="/img/tab-2.png" alt="logo-2" /></div>
-//                     <div className=" p-4"> <img src="/img/tab-3.png" alt="logo-3" /></div>
-//                     <div className=" p-4"> <img src="/img/tab-4.png" alt="logo-4" /></div>
-//                 </div>
-
-//             </div>
-
-//         </div>
-//     )
-// }
-
-// export default Clients
+// export default Clients;
+import { useEffect, useRef, useState } from "react"
 
 const Clients = () => {
     const logos = [
@@ -26,89 +8,107 @@ const Clients = () => {
         { src: "/img/tab-2.png", alt: "Client 2" },
         { src: "/img/tab-3.png", alt: "Client 3" },
         { src: "/img/tab-4.png", alt: "Client 4" },
-    ];
+    ]
+
+    const trackRef = useRef<HTMLDivElement>(null)
+    const [paused, setPaused] = useState(false)
+    const currentIndex = useRef(0)
+    const isAnimating = useRef(false)
+
+    useEffect(() => {
+        const track = trackRef.current
+        if (!track) return
+
+        // Width of one logo card (including margin)
+        const step = () => track.scrollWidth / (logos.length * 2)
+
+        const slideToNext = () => {
+            if (paused || isAnimating.current) return
+            isAnimating.current = true
+
+            currentIndex.current += 1
+
+            // If we've gone through all original logos, reset silently to 0
+            if (currentIndex.current >= logos.length) {
+                // slide to the duplicate position first
+                track.style.transition = `transform 700ms cubic-bezier(0.4, 0, 0.2, 1)`
+                track.style.transform = `translateX(-${currentIndex.current * step()}px)`
+
+                setTimeout(() => {
+                    // instant reset to start (no transition)
+                    track.style.transition = "none"
+                    currentIndex.current = 0
+                    track.style.transform = `translateX(0px)`
+
+                    setTimeout(() => {
+                        isAnimating.current = false
+                    }, 50)
+                }, 750)
+            } else {
+                track.style.transition = `transform 700ms cubic-bezier(0.4, 0, 0.2, 1)`
+                track.style.transform = `translateX(-${currentIndex.current * step()}px)`
+
+                setTimeout(() => {
+                    isAnimating.current = false
+                }, 750)
+            }
+        }
+
+        // Pause between slides
+        const PAUSE = 2000 // ms between each slide
+
+        const interval = setInterval(() => {
+            if (!paused) slideToNext()
+        }, PAUSE + 700)
+
+        return () => clearInterval(interval)
+    }, [paused, logos.length])
 
     return (
-        <section className="py-4 md:py-10 ">
-            <div className="container mx-auto">
-                {/* Heading stays centered inside container */}
-                {/* <h2 className="text-center text-xl md:text-2xl font-semibold text-gray-800 mb-8">
+        <section className="py-10 bg-white px-8">
+            <div className="container overflow-hidden">
+                <h2 className="text-center text-xl md:text-2xl font-semibold text-gray-800 mb-8">
                     Trusted By
-                </h2> */}
+                </h2>
 
-                {/* Marquee wrapper - everything is constrained here */}
-                <div className="relative overflow-hidden group rounded-xl  py-6">
-                    {/* Inner mask to prevent logos from touching edges */}
-                    <div className="relative mx-8 md:mx-12 lg:mx-16">
-                        {/* Scrolling track */}
-                        <div
-                            className="
-                flex animate-scroll-to-left whitespace-nowrap
-                will-change-transform
-                group-hover:grayscale
-                transition-all duration-500
-              "
-                        >
-                            {/* First set */}
-                            {logos.map((logo, idx) => (
-                                <div
-                                    key={idx}
-                                    className="shrink-0 mx-6 sm:mx-8 md:mx-10 lg:mx-12"
-                                >
-                                    <img
-                                        src={logo.src}
-                                        alt={logo.alt}
-                                        className="h-14 sm:h-16 md:h-20 w-auto object-contain transition duration-400"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            ))}
+                <div
+                    className="relative"
+                    onMouseEnter={() => setPaused(true)}
+                    onMouseLeave={() => setPaused(false)}
+                >
+                    <div
+                        ref={trackRef}
+                        className="flex whitespace-nowrap will-change-transform"
+                        style={{ transform: "translateX(0px)" }}
+                    >
+                        {/* Original set */}
+                        {logos.map((logo, idx) => (
+                            <div key={idx} className="shrink-0 mx-8 sm:mx-10 md:mx-14 lg:mx-20">
+                                <img
+                                    src={logo.src}
+                                    alt={logo.alt}
+                                    className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+                                    loading="lazy"
+                                />
+                            </div>
+                        ))}
 
-                            {/* Duplicate set for seamless loop */}
-                            {logos.map((logo, idx) => (
-                                <div
-                                    key={`dup-${idx}`}
-                                    className="shrink-0 mx-6 sm:mx-8 md:mx-10 lg:mx-12"
-                                >
-                                    <img
-                                        src={logo.src}
-                                        alt={logo.alt}
-                                        className="h-14 sm:h-16 md:h-20 w-auto object-contain transition duration-400"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            ))}
-                        </div>
+                        {/* Duplicate set for seamless reset */}
+                        {logos.map((logo, idx) => (
+                            <div key={`dup-${idx}`} className="shrink-0 mx-8 sm:mx-10 md:mx-14 lg:mx-20">
+                                <img
+                                    src={logo.src}
+                                    alt={logo.alt}
+                                    className="h-14 sm:h-16 md:h-20 w-auto object-contain"
+                                    loading="lazy"
+                                />
+                            </div>
+                        ))}
                     </div>
-
-                    {/* Fade edges so logos don't look cut off abruptly */}
-                    <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-linear-to-r from-white to-transparent z-10" />
-                    <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-linear-to-l from-white to-transparent z-10" />
                 </div>
             </div>
-
-            {/* Animation definitions - control speed here */}
-            <style >{`
-        @keyframes scroll-to-left {
-          from {
-            transform: translateX(0);
-          }
-          to {
-            transform: translateX(-50%);
-          }
-        }
-
-        .animate-scroll-to-left {
-          animation: scroll-to-left 38s linear infinite;   /* ← change number = speed (32s–45s range feels good) */
-        }
-
-        /* Optional pause on hover */
-        .group:hover .animate-scroll-to-left {
-          animation-play-state: paused;
-        }
-      `}</style>
         </section>
-    );
-};
+    )
+}
 
-export default Clients;
+export default Clients
