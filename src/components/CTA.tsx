@@ -52,7 +52,7 @@ const CTA = () => {
                         </h5>
                         <h2 className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl">
                             We Don't Just Work For You
-                            <br className="hidden sm:block" />
+                            <br className="block" />
                             <span className="text-(--my-green)">We Work With You</span>
                         </h2>
                         <p className='mt-5 text-gray-600 text-sm sm:text-base'>

@@ -8,6 +8,8 @@ const Clients = () => {
         { src: "/img/tab-2.png", alt: "Client 2" },
         { src: "/img/tab-3.png", alt: "Client 3" },
         { src: "/img/tab-4.png", alt: "Client 4" },
+        { src: "/img/tab-5.png", alt: "Client 5" },
+        { src: "/img/tab-6.png", alt: "Client 6" },
     ]
 
     const trackRef = useRef<HTMLDivElement>(null)

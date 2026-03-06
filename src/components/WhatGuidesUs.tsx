@@ -129,8 +129,7 @@ const WhatGuidesUs = () => {
                             To partner with industries to embed a robust culture of health,
                             safety, and environmental responsibility — delivering innovative,
                             practical, and sustainable consulting services and training programs
-                            that mitigate risk, ensure regulatory compliance, enhance operational
-                            resilience, and drive meaningful progress toward a sustainable future.
+                            that mitigate risk, ensure regulatory compliance, enhance operational excellence, and drive meaningful progress toward a sustainable future.
                         </p>
 
                         <div className="mt-6 pt-5 border-t border-(--my-purple)/20 flex items-center gap-2">
