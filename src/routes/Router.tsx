@@ -6,6 +6,7 @@ import Home from "../pages/Home";
 import Services from "../pages/Services";
 import WhyTAB from "../pages/WhyTAB";
 import ContactPage from "../pages/ContactPage";
+import NotFoundPage from "../pages/NotFound";
 
 
 
@@ -29,7 +30,8 @@ export const router = createBrowserRouter([
                     { path: "why-us", element: <WhyTAB />, handle: { title: "Why TAB HSE" } },
                     { path: "contact-us", element: <ContactPage />, handle: { title: "Contact Us" } },
                 ]
-            }
+            },
+            { path: "*", element: <NotFoundPage /> }
         ]
     }
 ])
