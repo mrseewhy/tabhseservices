@@ -79,8 +79,8 @@ const reasons = [
 ];
 
 const stats = [
-    { value: "100+", label: "Projects Delivered", accent: "purple" },
-    { value: "50+", label: "Clients Served", accent: "green" },
+    { value: "20+", label: "Projects Delivered", accent: "purple" },
+    { value: "12+", label: "Clients Served", accent: "green" },
     { value: "5+", label: "Years Experience", accent: "purple" },
     { value: "7", label: "Service Areas", accent: "green" },
 ];
@@ -100,8 +100,8 @@ const WhyTAB = () => {
                         </span>
                         <h2 className="mt-3 text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl leading-tight">
                             We Don't Just Work{" "}
-                            <span className="text-(--my-purple)">For</span> You.{" "}
-                            <br className="hidden sm:block" />
+                            <span className="text-(--my-purple)">For</span> You,{" "}
+                            <br className="block" />
                             We Work{" "}
                             <span className="text-(--my-green)">With</span> You.
                         </h2>

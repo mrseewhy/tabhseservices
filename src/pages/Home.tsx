@@ -16,6 +16,7 @@ const Home = () => {
             <WhyUs />
             <CTA />
             <Contact />
+            <div className="mt-12 md:mt-20"></div>
         </div>
     )
 }

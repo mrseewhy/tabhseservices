@@ -65,7 +65,7 @@ const AboutSectionForPage = () => {
                                 <p className="text-xs text-gray-500 mt-1 leading-snug">Projects Delivered</p>
                             </div>
                             <div className="rounded-2xl bg-(--my-green)/10 border border-(--my-green)/20 p-4 text-center">
-                                <p className="text-2xl font-black text-(--my-green)">50+</p>
+                                <p className="text-2xl font-black text-(--my-green)">12+</p>
                                 <p className="text-xs text-gray-500 mt-1 leading-snug">Clients Served</p>
                             </div>
                             <div className="rounded-2xl bg-(--my-purple)/10 border border-(--my-purple)/20 p-4 text-center">
