@@ -67,7 +67,7 @@ const Services = () => {
                     </div>
                     <Link to="/services">
                         <span className="text-(--my-purple) font-semibold text-sm hover:underline">
-                            View All Services →
+                            View All Services &darr;
                         </span>
                     </Link>
                 </div>
