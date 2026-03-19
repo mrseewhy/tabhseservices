@@ -1,4 +1,22 @@
 import { useState } from "react";
+import { z } from "zod";
+import emailjs from "@emailjs/browser";
+
+export const contactSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters"),
+    email: z.string().email("Invalid email address"),
+    purpose: z.enum(["inquire", "project"], "Please select one among the two options (General Inquiry or Projects)"),
+    service: z.string().optional(),
+    message: z.string().min(10, "Message must be at least 10 characters"),
+}).refine((data) => {
+    if (data.purpose === "project") {
+        return data.service && data.service.length > 0;
+    }
+    return true;
+}, {
+    message: "Service is required for project inquiries",
+    path: ["service"],
+});
 
 const serviceOptions = [
     "Consultancy Services",
@@ -68,25 +86,109 @@ type Purpose = "inquire" | "project" | "";
 const ContactPage = () => {
     const [purpose, setPurpose] = useState<Purpose>("");
     const [submitted, setSubmitted] = useState(false);
+    const [errors, setErrors] = useState<Record<string, string>>({});
     const [form, setForm] = useState({
         name: "",
         email: "",
         purpose: "" as Purpose,
         service: "",
         message: "",
+        hp_field: ""
+
     });
+
+    const isSubmitDisabled =
+        !form.name ||
+        !form.email ||
+        !form.purpose ||
+        (form.purpose === "project" && !form.service) ||
+        !form.message;
+
+    // const handleChange = (
+    //     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    // ) => {
+    //     const { name, value } = e.target;
+    //     setForm((prev) => ({ ...prev, [name]: value }));
+    //     if (name === "purpose") setPurpose(value as Purpose);
+    // };
+
+    // const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    //     e.preventDefault();
+    //     setSubmitted(true);
+    // };
 
     const handleChange = (
         e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
     ) => {
         const { name, value } = e.target;
+
         setForm((prev) => ({ ...prev, [name]: value }));
+
+        // 👇 clear error for the field being edited
+        setErrors((prev) => {
+            const newErrors = { ...prev };
+            delete newErrors[name];
+            return newErrors;
+        });
+
         if (name === "purpose") setPurpose(value as Purpose);
     };
 
-    const handleSubmit = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const handleSubmit = async (e: React.MouseEvent<HTMLButtonElement>) => {
         e.preventDefault();
-        setSubmitted(true);
+
+        const result = contactSchema.safeParse(form);
+
+        // ❌ Block if honeypot filled
+        if (form.hp_field) {
+            console.warn("Bot detected via honeypot");
+            return;
+        }
+
+        // ❌ Simple bot UA check
+        const ua = navigator.userAgent.toLowerCase();
+        if (/bot|crawl|spider/.test(ua)) {
+            console.warn("Bot detected via user-agent");
+            return;
+        }
+
+        // Handle validation errors
+        if (!result.success) {
+            const fieldErrors: Record<string, string> = {};
+            result.error.issues.forEach((err) => {
+                const field = err.path[0];
+                if (typeof field === "string") fieldErrors[field] = err.message;
+            });
+            setErrors(fieldErrors);
+            return;
+        }
+
+        // ✅ Clear all previous errors if validation passes
+        setErrors({});
+
+        // NEXT STEP: send email 
+
+        try {
+            await emailjs.send(
+                "service_zvghkwa",
+                "template_45aygbu",
+                {
+                    name: form.name,
+                    email: form.email,
+                    purpose: form.purpose,
+                    service: form.service || "N/A",
+                    message: form.message,
+                    hp_field: "", // ← honeypot
+                },
+                "VSDykSOMdxFueroW4"
+            );
+
+            setSubmitted(true);
+
+        } catch (error) {
+            console.error(error);
+            alert("Failed to send message. Try again.");
+        }
     };
 
     const inputClass =
@@ -171,7 +273,7 @@ const ContactPage = () => {
                                         <button
                                             onClick={() => {
                                                 setSubmitted(false);
-                                                setForm({ name: "", email: "", purpose: "", service: "", message: "" });
+                                                setForm({ name: "", email: "", purpose: "", service: "", message: "", hp_field: "" });
                                                 setPurpose("");
                                             }}
                                             className="mt-8 text-sm font-semibold text-(--my-purple) hover:underline"
@@ -199,6 +301,7 @@ const ContactPage = () => {
                                                     placeholder="e.g. John Doe"
                                                     className={inputClass}
                                                 />
+                                                {errors.name && <p className="text-red-500 text-xs mt-1">{errors.name}</p>}
                                             </div>
 
                                             {/* Email */}
@@ -212,6 +315,7 @@ const ContactPage = () => {
                                                     placeholder="e.g. john@company.com"
                                                     className={inputClass}
                                                 />
+                                                {errors.email && <p className="text-red-500 text-xs mt-1">{errors.email}</p>}
                                             </div>
                                         </div>
 
@@ -239,6 +343,7 @@ const ContactPage = () => {
                                                     </button>
                                                 ))}
                                             </div>
+                                            {errors.purpose && <p className="text-red-500 text-xs mt-1">{errors.purpose}</p>}
                                         </div>
 
                                         {/* Service — only when Project is selected */}
@@ -263,6 +368,7 @@ const ContactPage = () => {
                                                         </svg>
                                                     </div>
                                                 </div>
+                                                {errors.service && <p className="text-red-500 text-xs mt-1">{errors.service}</p>}
                                             </div>
                                         )}
 
@@ -277,12 +383,32 @@ const ContactPage = () => {
                                                 placeholder="Tell us more about how we can help you..."
                                                 className={`${inputClass} resize-none`}
                                             />
+                                            {errors.message && <p className="text-red-500 text-xs mt-1">{errors.message}</p>}
+                                        </div>
+
+                                        {/* Honeypot - invisible to humans */}
+                                        <div style={{ display: "none" }}>
+                                            <label>Leave this empty</label>
+                                            <input
+                                                type="text"
+                                                name="hp_field"
+                                                value={form.hp_field || ""}
+                                                onChange={handleChange}
+                                                autoComplete="off"
+                                            />
                                         </div>
 
                                         {/* Submit */}
-                                        <button
+                                        {/* <button
                                             onClick={handleSubmit}
                                             className="w-full sm:w-auto sm:px-12 py-3 rounded-xl bg-(--my-green) text-white text-sm font-bold hover:bg-green-700 transition-colors duration-200"
+                                        >
+                                            Send Message →
+                                        </button> */}
+                                        <button
+                                            onClick={handleSubmit}
+                                            disabled={isSubmitDisabled}
+                                            className="w-full sm:w-auto sm:px-12 py-3 rounded-xl bg-(--my-green) text-white text-sm font-bold hover:bg-green-700 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
                                         >
                                             Send Message →
                                         </button>
