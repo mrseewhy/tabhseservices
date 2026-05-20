@@ -5,8 +5,8 @@
 @theme {
   --font-head: "Barlow Condensed", "Arial Narrow", sans-serif;
   --font-body: "Open Sans", system-ui, sans-serif;
-  --my-green: #00A651;
-  --my-purple: #8B2B8B;
+  --my-green: #00a651;
+  --my-purple: #8b2b8b;
 }
 
 @layer base {
