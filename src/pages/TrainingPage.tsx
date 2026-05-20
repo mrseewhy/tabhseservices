@@ -18,7 +18,7 @@ const ServicesPage = () => {
             </h2>
 
             <div className="mt-3 mx-auto h-1 w-16 rounded-full bg-(--my-purple)" />
-            <p className="mt-6 text-gray-600 text-sm leading-relaxed">
+            <p className="mt-6 text-gray-600 text-sm leading-relaxed ">
               Our premium training programs are built for organizations where
               safety and health are not negotiable. We combine deep field
               expertise with current regulatory insight to deliver training that
@@ -69,7 +69,7 @@ const ServicesPage = () => {
                     </Link>
 
                     {/* Description */}
-                    <p className="text-gray-500 text-sm leading-relaxed mb-5">
+                    <p className="text-gray-500 text-sm leading-relaxed mb-5 line-clamp-2">
                       {s.description}
                     </p>
                   </div>
