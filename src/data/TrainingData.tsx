@@ -1,5 +1,3 @@
-import { act } from "react";
-
 export const TrainingData = [
   {
     id: 1,
