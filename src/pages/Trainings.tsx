@@ -52,7 +52,7 @@ const Trainings = () => {
                   Payment Details
                 </p>
                 <p className="mt-2 text-sm text-gray-200 font-medium break-all">
-                  {training?.accountNumber}
+                  {training.accountNumber}
                 </p>
               </div>
             )}
